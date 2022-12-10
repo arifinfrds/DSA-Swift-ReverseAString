@@ -30,7 +30,16 @@ struct ReverseAString {
             return string
         }
         
-        return String(string.reversed())
+        var characters = string.map { $0 }
+        var reversedCharacters = [Character]()
+        
+        for index in (0...characters.count - 1).reversed() {
+            reversedCharacters.append(characters[index])
+        }
+        
+        return reversedCharacters
+            .map { String($0) }
+            .joined()
     }
 }
 
@@ -53,6 +62,14 @@ final class ReverseAStringTests: XCTestCase {
     }
     
     func test_reverse_shouldConvertsOnMoreThanSingleStringCount() {
+        let sut = ReverseAString()
+        
+        let result = sut.reverse(string: "Swift")
+        
+        XCTAssertEqual(result, "tfiwS")
+    }
+    
+    func test_reverse_shouldConvertsOnMoreThanSingleStringCountMoreCases() {
         
         ["ab", "mac", "hello"].enumerated().forEach { (index, string) in
             
