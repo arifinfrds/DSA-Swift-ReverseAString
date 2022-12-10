@@ -53,10 +53,14 @@ final class ReverseAStringTests: XCTestCase {
     }
     
     func test_reverse_shouldConvertsOnMoreThanSingleStringCount() {
-        let sut = ReverseAString()
         
-        let result = sut.reverse(string: "ab")
-        
-        XCTAssertEqual(result, "ba")
+        ["ab", "mac", "hello"].enumerated().forEach { (index, string) in
+            
+            let sut = ReverseAString()
+            
+            let result = sut.reverse(string: string)
+            
+            XCTAssertEqual(result, String(string.reversed()), "failed at index: \(index)")
+        }
     }
 }
