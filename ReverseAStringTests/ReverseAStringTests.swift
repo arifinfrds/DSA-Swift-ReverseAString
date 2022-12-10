@@ -30,7 +30,7 @@ struct ReverseAString {
             return string
         }
         
-        var characters = string.map { $0 }
+        let characters = string.map { $0 }
         var reversedCharacters = [Character]()
         
         for index in (0...characters.count - 1).reversed() {
